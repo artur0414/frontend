@@ -2,19 +2,8 @@
 
 import Aside from "@/components/Aside/aside";
 import Header from "@/components/header/header";
-import {
-  Dispatch,
-  SetStateAction,
-  createContext,
-  useEffect,
-  useState,
-} from "react";
+import { createContext, useEffect, useState } from "react";
 import {} from "vm";
-
-interface InitialContext {
-  user: string;
-  setEndSession: Dispatch<SetStateAction<boolean>>;
-}
 
 // Contexto inicial
 const initialContext = {
@@ -23,7 +12,10 @@ const initialContext = {
 };
 
 // Crear el contexto
-export const ProtectedContext = createContext<InitialContext>(initialContext);
+export const ProtectedContext = createContext<{
+  user: string;
+  setEndSession: (value: boolean) => void; // Función que recibe un booleano
+}>(initialContext);
 
 const ProtectedPage = () => {
   const [haveAccess, setHaveAccess] = useState<boolean>(false);
@@ -51,7 +43,9 @@ const ProtectedPage = () => {
             // Redirigir a la página de error si no se tiene acceso
             return; // Salir de la función
           }
-        } catch (error) {}
+        } catch (error: any) {
+          throw new Error(error);
+        }
       };
       apiLogOutRequest();
 

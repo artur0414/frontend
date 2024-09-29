@@ -117,7 +117,7 @@ const RegisterForm = () => {
             maxLength={16} // Limita a 16 caracteres
             required
           />
-          {passwordError && <p>password doesn't match</p>}
+          {passwordError && <p>password does not match</p>}
           {message.length !== 0 && (
             <p className="text-red-400 text-xs">{message}</p>
           )}

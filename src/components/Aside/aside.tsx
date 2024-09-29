@@ -1,5 +1,5 @@
 import { ProtectedContext } from "@/app/dashboard/page";
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 
 const Aside = () => {
   const { setEndSession } = useContext(ProtectedContext);

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, createContext, useEffect } from "react";
+import { useState, useEffect } from "react";
 
 const LoginForm = () => {
   const [username, setUserName] = useState<string>("");
@@ -17,6 +17,7 @@ const LoginForm = () => {
 
   const handleUsernameInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     setUserName(e.target.value);
+    setError("");
   };
 
   const handlePasswordInput = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -50,7 +51,7 @@ const LoginForm = () => {
       }
 
       window.location.href = "/dashboard";
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.log(error);
       throw error; // Re-lanza el error para que pueda ser capturado en el componente
     }

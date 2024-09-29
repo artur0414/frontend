@@ -1,5 +1,5 @@
 import { ProtectedContext } from "@/app/dashboard/page";
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import { BellIcon, ChevronDownIcon } from "@heroicons/react/24/solid";
 
 const Header = () => {
