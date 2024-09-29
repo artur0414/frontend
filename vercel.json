@@ -2,14 +2,22 @@
     "version": 2,
     "builds": [
       {
+        "src": "next.config.js",
+        "use": "@vercel/next"
+      },
+      {
         "src": "server-with-mysql.js",
         "use": "@vercel/node"
       }
     ],
     "routes": [
       {
-        "src": "/(.*)",
+        "src": "/api/(.*)",
         "dest": "server-with-mysql.js"
+      },
+      {
+        "src": "/(.*)",
+        "dest": "/"
       }
     ]
   }
